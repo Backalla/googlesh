@@ -4,6 +4,17 @@ from torrequest import TorRequest
 
 browser = mechanicalsoup.Browser()
 
+from requests import get
+
+
+def lambda_handler(event, context):
+    q = event["q"]
+    q = q.replace(" ","+")
+    url = "http://www.google.com/search?q="+q
+    print(url)
+    htmltext = get(url).text
+    return htmltext
+
 
 def get_new_ip(n):
     with TorRequest(proxy_port=9001, ctrl_port=9002, password=None) as tr:
@@ -38,7 +49,9 @@ def google_search(q,n):
     # print(dir(htmltext))
 
 if __name__ == '__main__':
-    google_search("sample search",100)
+    event = {"q":"Sample search"}
+    print(lambda_handler(event,"context "))
+    # google_search("sample search",100)
     # get_new_ip(100)
     # for i in range(100):
     #     print(i)
