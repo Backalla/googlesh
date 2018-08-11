@@ -49,9 +49,9 @@ def google_search(q,n):
     # print(dir(htmltext))
 
 if __name__ == '__main__':
-    event = {"q":"Sample search"}
-    print(lambda_handler(event,"context "))
-    # google_search("sample search",100)
+    # event = {"q":"Sample search"}
+    # print(lambda_handler(event,"context "))
+    google_search("sample search",100)
     # get_new_ip(100)
     # for i in range(100):
     #     print(i)
